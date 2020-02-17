@@ -1,0 +1,15 @@
+Clone the project and cd to the project directory
+1.	First signup for PayPal Developer Account and create sandbox account, both personal and business and create a app
+2.	Use the created app client id and client secret in paypal for generating token and replace those values in get_token.py
+3.	First to create a plan use createPlan() in createPlan.py, one can change the value of the passed variables to describe plan as 		needed 
+4.	Use paypal.py or other files to import createPlan() from createPlan.py and create a plan. See a sample in paypal.py
+5.	After creating a plan, it needs to be activated. createPlan() return response with the created plan id
+6.	Use that plan id to activate using activatePlan.py, see a sample demo in paypal.py
+7.	You can check the status of the created plan by using curl or postman for get request to https://api.sandbox.paypal.com/		v1/payments/{plan_id}
+8.	The plan status must be 'ACTIVE'
+9.	Now we need to create a billing agreement. Use createBillingAgg.py and pass the data as requied(see paypal.py for samples)
+10.	After the successful creation of billing agreement, the browser opens and asks to enter paypal user credentials to agree the   	   subscripton plan.
+11.	The response from createBillingAgg() from createBillingAgg.py will include a approval_url in links containing a token.
+12. This token is needed to execute the billing agreements. Pass this token to executeAgg.py
+13.	Look for samples in paypal.py
+14. Checkout https://developer.paypal.com/docs/archive/subscriptions/integrate/integrate-steps/ for more details about integration 	   paypal subscription service
